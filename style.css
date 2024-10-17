@@ -1,0 +1,66 @@
+/* Container for all tasks */
+#alltaskdiv {
+    max-height: 400px; /* Limit the height for better visibility */
+    overflow-y: auto; /* Allow scrolling if tasks exceed max-height */
+    padding: 1rem; /* Add padding for spacing */
+    border-radius: 0.5rem; /* Rounded corners for aesthetics */
+    background-color: #A2D2DF !important; /* Dark background for contrast */
+}
+
+/* Task item styling */
+.task-item {
+    display: flex;
+    flex-direction: column; /* Keep tasks in a column */
+    align-items: center; /* Align items to the left */
+    justify-content: flex-start; /* Align items to the top */
+    padding: 1rem; /* Increase padding for better touch targets */
+    border: 1px solid #dee2e6; /* Border to distinguish tasks */
+    border-radius: 0.5rem; /* Rounded corners */
+    margin-bottom: 0.5rem; /* Space between tasks */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 100%; /* Ensure the task item takes full width */
+    background-color: #FEF9F2; /* Ensure background color is set for tasks */
+}
+
+/* Background color for completed tasks */
+.bg-green {
+    background-color: #B1D690; /* Light green for completed tasks */
+    color: #333; /* Dark text for better readability on light green */
+}
+
+.bg-blue{
+    background-color: #E9EED9 !important; /* Dark background for contrast */ 
+}
+
+.bg-offwhite{
+    background-color: #FEF9F2;
+}
+
+/* Make sure task text is visible */
+.task-text {
+    color: #333; /* Dark text for visibility */
+    font-weight: 500; /* Slightly bold for better visibility */
+    margin: 0; /* Remove default margins for better control */
+}
+
+/* Optional: Add hover effect for task items */
+.task-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+    background-color: #f8f9fa; /* Light background on hover for contrast */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    #alltaskdiv {
+        max-height: 300px; /* Adjust max height for smaller screens */
+    }
+    
+    .task-item {
+        padding: 0.75rem; /* Reduce padding for smaller screens */
+    }
+
+    .task-text {
+        font-size: 0.9rem; /* Slightly smaller text on smaller screens */
+    }
+}
