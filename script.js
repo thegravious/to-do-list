@@ -12,6 +12,7 @@ let alltaskdiv = document.querySelector("#alltaskdiv")
 let btnupdate = document.querySelector("#btn-update")
 let inputsubmint = document.querySelector("#inputsubmit")
 let updatetask = document.querySelector("#updatetask")
+let taskm = document.querySelector("#taskmanager")
 
 
 
@@ -47,67 +48,74 @@ let appendtask = () => {
                 </div>
             `
 
-
-            // to delete any task //
-
-            newdiv.querySelector(`#del-todo-${alltask[i].taskId}`).addEventListener("click", () => {
-                deletTask(alltask[i].taskId)
-            })
-
             //to update any task //
 
             newdiv.querySelector(`#update-todo-${alltask[i].taskId}`).addEventListener("click", () => {
                 alltaskdiv.classList.add("d-none")
                 inputsubmint.classList.add("d-none")
                 updatetask.classList.remove("d-none")
+                taskm.innerText = "Update task"
+                inp2.value = `${alltask[i].taskTitle}`
 
                 btninnerupdate.addEventListener("click", () => {
                     alltaskdiv.classList.remove("d-none");
-                    inputsubmit.classList.remove("d-none"); // corrected 'inputsubmint' to 'inputsubmit'
+                    inputsubmint.classList.remove("d-none"); // corrected 'inputsubmint' to 'inputsubmit'
                     updatetask.classList.add("d-none");
 
                     let y = inp2.value
                     updateTask(alltask[i].taskId, y)
+                    appendtask()
                 });
             })
 
             // to make any task as completed //
 
-            if(alltask[i].taskStatus){
-                newdiv.classList.add("bg-green")
-                newdiv.querySelector(`#undo-todo-${alltask[i].taskId}`).classList.remove("d-none")
-                newdiv.querySelector(`#done-todo-${alltask[i].taskId}`).classList.add("d-none")
-            }else{
-                newdiv.classList.remove("bg-green")
+            let changebg = () => {
+
+                if (alltask[i].taskStatus) {
+                    newdiv.classList.add("bg-green")
+                    newdiv.querySelector(`#undo-todo-${alltask[i].taskId}`).classList.remove("d-none")
+                    newdiv.querySelector(`#done-todo-${alltask[i].taskId}`).classList.add("d-none")
+                    newdiv.querySelector(`#update-todo-${alltask[i].taskId}`).classList.add("d-none")
+
+                } else {
+                    newdiv.classList.remove("bg-green")
+                }
+
+                newdiv.querySelector(`#done-todo-${alltask[i].taskId}`).addEventListener("click", () => {
+                    let z = true
+                    markDone(alltask[i].taskId, z)
+
+                    appendtask()
+
+
+                })
+
+                newdiv.querySelector(`#undo-todo-${alltask[i].taskId}`).addEventListener("click", () => {
+                    let z = false
+                    markDone(alltask[i].taskId, z)
+                    appendtask()
+                })
+
             }
 
+            // to delete any task //
 
-            newdiv.querySelector(`#done-todo-${alltask[i].taskId}`).addEventListener("click", () => {
-                let z = true
-                markDone(alltask[i].taskId , z) 
+            newdiv.querySelector(`#del-todo-${alltask[i].taskId}`).addEventListener("click", () => {
+                deletTask(alltask[i].taskId)
+                alltaskdiv.classList.add("d-none")
+                appendtask()
+            })
 
-                if(alltask[i].taskStatus){
-                    newdiv.classList.add("bg-green")
-                }
-
-            })  
-
-            newdiv.querySelector(`#undo-todo-${alltask[i].taskId}`).addEventListener("click", () => {
-                let z = false
-                markDone(alltask[i].taskId , z) 
-
-                if(alltask[i].taskStatus){
-                    newdiv.classList.add("bg-green")
-                }
-
-            })  
             alltaskdiv.appendChild(newdiv)
+
+            changebg()
 
         }
     }
 }
-
 appendtask()
+
 
 
 btnsubmit.addEventListener("click", () => {
