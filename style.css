@@ -7,6 +7,16 @@
     background-color: #A2D2DF !important; /* Dark background for contrast */
 }
 
+.bungee-regular {
+  font-family: "Bungee", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.text-brown{
+  color: #3C3D37 !important;
+}
+
 /* Task item styling */
 .task-item {
     display: flex;
