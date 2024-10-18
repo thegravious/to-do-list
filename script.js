@@ -103,6 +103,7 @@ let appendtask = () => {
 
             newdiv.querySelector(`#del-todo-${alltask[i].taskId}`).addEventListener("click", () => {
                 deletTask(alltask[i].taskId)
+
                 appendtask()
             })
 

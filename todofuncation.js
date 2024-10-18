@@ -71,7 +71,6 @@ markDone()
 // delete any task based on the taskId
 
 let deletTask = (x) => {
-    console.log(x)
     if (localStorage.getItem("task")) {
         let arr = JSON.parse(localStorage.getItem("task"))
         let isdelete = false;

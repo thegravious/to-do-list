@@ -51,16 +51,39 @@
 }
 
 /* Responsive styles */
+/* General mobile styles */
 @media (max-width: 768px) {
-    #alltaskdiv {
-        max-height: 300px; /* Adjust max height for smaller screens */
+    .bg-blue {
+      width: 100vw;    /* Full viewport width */
+      height: 100vh;   /* Full viewport height */
+      padding: 0;
     }
-    
-    .task-item {
-        padding: 0.75rem; /* Reduce padding for smaller screens */
+  
+    .bg-offwhite {
+      width: 100vw;    /* Full width for the task manager content */
+      height: 80vh;   /* Full height for the task manager content */
+      border-radius: 0; /* Remove rounded corners for full-screen look */
+      display: flex;
+      flex-direction: column;
+    }
+  
+    /* Limit the task display area and prevent overflow */
+    #alltaskdiv {
+      max-height: 50vh;   /* Adjust height for the task list */
+      overflow-y: auto;   /* Enable scrolling within the task list */
+      margin-bottom: 20px;
+    }
+  
+    #taskmanager, #inputsubmit, #updatetask {
+      padding: 10px;
     }
 
-    .task-text {
-        font-size: 0.9rem; /* Slightly smaller text on smaller screens */
+    #btnsubmit{
+        margin-top: 10px;
     }
-}
+  
+    #notask {
+      margin-top: 10px;
+    }
+  }
+  
